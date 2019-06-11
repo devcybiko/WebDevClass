@@ -1,7 +1,7 @@
 import * as greg from './greg.js';
 
 var randomInputs = [[0, 1], [9, 100], [-10, 10]];
-var hasErrors = true;
+var hasErrors = false;
 
 function testRandomPositive() {
 	for (var i = 0; i < randomInputs.length; i++) {
