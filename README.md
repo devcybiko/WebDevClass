@@ -1,5 +1,13 @@
-# GREG'S TOOL KIT
-To run the tests run `runtests.sh`
+# GREG'S WEB DEV SUPPORT FILES
+
+## gregcalc
+1. This is greg's solution to the Calculator actitivity
+2. There are three solutions - each more economical and cryptic than the last
+
+## ToolKit
+1. greg.js - a collection of JavaScript functions that you may find useful
+2. gregTest.js - a simple test framework to verify the functions work
+3. To run the tests run `runtests.sh`
 
 ## Notes
 1. Needs node.js version 12+
