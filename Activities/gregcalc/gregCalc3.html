@@ -1,3 +1,10 @@
+<!--
+  Greg's solution for the calculator activity
+  In this final version, I use the "eval" function
+  to compute the result. Eval() takes a string as a parameter
+  and then 'evaluates' the string as if it were JavaScript. 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,8 +107,13 @@
             symbol = $(this).text();
         }
 
+        /**
+         * This time, we use eval() to compute the result
+         **/
         function myEqualClick(event) {
-            var value = $(this).attr("value");
+            // we need a way to convert the 'oper' string into a 
+            // JavaScript operator for the computation
+            // This little object does that for us economically
             var operSymbols = {
                 "plus": "+",
                 "minus": "-",
@@ -111,7 +123,14 @@
             }
 
             // Using the eval() method
+            // we're concatenating the firstNumber, the operation, and the secondNumber
+            // to create a JavaScript string that can be evaluated
+            // EG: firstNumber = "123", secondNumber = "456", and oper = "plus"
+            // equation = "123+456"
             var equation = firstNumber + operSymbols[oper] + secondNumber;
+
+            // this one-line-o-code wil compute whatever equation we pass in
+            // and return the result for display
             result = eval(equation);
         }
 
@@ -139,7 +158,7 @@
 
             // this is a tricky-bit... all the buttons call the updateDisplay functions
             // AND they call it AFTER their function - because we set the
-            // .bth onClick AFTER the others
+            // .btn onClick AFTER the others
 
             $(".btn").on("click", updateDisplay);
         });

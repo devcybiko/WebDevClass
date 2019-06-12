@@ -1,3 +1,8 @@
+<!--
+  Greg's solution for the calculator activity
+  Notice that I use an object to "dispath" the computions
+  Future versions optimize using different methods
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +85,7 @@
     var firstNumber = "";
     var secondNumber = "";
     var oper = "";
-    var symbol = ""
+    var symbol = "";
     var result = "";
 
     function myNumberClick(event) {
@@ -92,24 +97,32 @@
       }
     }
 
+    /**
+     * This operClass allows me to select the function to do the math
+     * using the clicked key 'value' as an index into the operClasss
+     **/
+    var operClass = {
+      "plus": function () { return parseInt(firstNumber) + parseInt(secondNumber) },
+      "minus": function () { return parseInt(firstNumber) - parseInt(secondNumber); },
+      "times": function () { return parseInt(firstNumber) * parseInt(secondNumber); },
+      "divide": function () { return parseInt(firstNumber) / parseInt(secondNumber); },
+      "power": function () { return parseInt(firstNumber) ** parseInt(secondNumber); },
+    }
+
     function myOperatorClick(event) {
       oper = $(this).attr("value");
       symbol = $(this).text();
     }
 
+    /**
+     * Notice that instead of a 10-line if-hydra, we have 
+     * a single line of code that computes the result
+     * We use the 'oper' from the myOperClick event handler
+     * to choose the function to perform.
+     **/
     function myEqualClick(event) {
-      var value = $(this).attr("value");
-
-      // using the if-hydra
-      if (oper === "plus") {
-        result = parseInt(firstNumber) + parseInt(secondNumber);
-      } else if (oper === "minus") {
-        result = parseInt(firstNumber) - parseInt(secondNumber);
-      } else if (oper === "times") {
-        result = parseInt(firstNumber) * parseInt(secondNumber);
-      } else if (oper === "divide") {
-        result = parseInt(firstNumber) / parseInt(secondNumber);
-      }
+      // Using the operClass to compute the result...
+      result = operClass[oper]();
     }
 
     function myClearClick(event) {
@@ -127,7 +140,6 @@
       $("#operator").text(symbol);
       $("#result").text(result);
     }
-
     $(document).ready(function () {
       $(".number").on("click", myNumberClick);
       $(".operator").on("click", myOperatorClick);
@@ -136,7 +148,7 @@
 
       // this is a tricky-bit... all the buttons call the updateDisplay functions
       // AND they call it AFTER their function - because we set the
-      // .bth onClick AFTER the others
+      // .btn onClick AFTER the others
       $(".btn").on("click", updateDisplay);
     });
   </script>

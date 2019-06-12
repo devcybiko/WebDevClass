@@ -1,3 +1,8 @@
+<!--
+  Greg's solution for the calculator activity
+  Notice that I use an If-hydra to handle the operation keys
+  Future versions optimize using different methods
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +85,7 @@
     var firstNumber = "";
     var secondNumber = "";
     var oper = "";
-    var symbol = "";
+    var symbol = ""
     var result = "";
 
     function myNumberClick(event) {
@@ -92,23 +97,28 @@
       }
     }
 
-    var operClass = {
-      "plus": function () { return parseInt(firstNumber) + parseInt(secondNumber) },
-      "minus": function () { return parseInt(firstNumber) - parseInt(secondNumber); },
-      "times": function () { return parseInt(firstNumber) * parseInt(secondNumber); },
-      "divide": function () { return parseInt(firstNumber) / parseInt(secondNumber); },
-      "power": function () { return parseInt(firstNumber) ** parseInt(secondNumber); },
-    }
-
     function myOperatorClick(event) {
       oper = $(this).attr("value");
       symbol = $(this).text();
     }
 
-    function myEqualClick(event) {
+      /**
+       *  using the if-hydra for computing the result
+       **/
+      function myEqualClick(event) {
       var value = $(this).attr("value");
-      // Using the operClass to compute the result...
-      result = operClass[oper]();
+
+      if (oper === "plus") {
+        result = parseInt(firstNumber) + parseInt(secondNumber);
+      } else if (oper === "minus") {
+        result = parseInt(firstNumber) - parseInt(secondNumber);
+      } else if (oper === "times") {
+        result = parseInt(firstNumber) * parseInt(secondNumber);
+      } else if (oper === "divide") {
+        result = parseInt(firstNumber) / parseInt(secondNumber);
+      } else if (oper === "power") {
+        result = parseInt(firstNumber) ** parseInt(secondNumber);
+      }
     }
 
     function myClearClick(event) {
@@ -120,21 +130,35 @@
       result = "";
     }
 
+    /**
+     * Notice that I'm using a single function to update the display
+     * This is a handy/easy way to keep the display consistent
+     * Rather than just updating one piece of the display
+     * on each key stroke.
+     * We just update everything with all the current values.
+     **/
     function updateDisplay() {
       $("#first-number").text(firstNumber);
       $("#second-number").text(secondNumber);
       $("#operator").text(symbol);
       $("#result").text(result);
     }
+
+    /**
+     * Notice that I don't try to use "anonymous" functions in my onClick definitions
+     * I like to create a function that can be named
+     * I think it makes the code cleaner and more expressive
+     * And it means that your can reuse your onClick methods if necessary
+     **/
     $(document).ready(function () {
       $(".number").on("click", myNumberClick);
       $(".operator").on("click", myOperatorClick);
       $(".equal").on("click", myEqualClick);
       $(".clear").on("click", myClearClick);
 
-      // this is a tricky-bit... all the buttons call the updateDisplay functions
+      // this is the tricky-bit... all the buttons call the updateDisplay functions
       // AND they call it AFTER their function - because we set the
-      // .bth onClick AFTER the others
+      // .btn onClick AFTER the others
       $(".btn").on("click", updateDisplay);
     });
   </script>
