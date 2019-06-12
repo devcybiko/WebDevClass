@@ -33,6 +33,8 @@ Then, for each suit, we add the card's ordinal (A=0..King=12).
 This gives us a value from 0-51 which represents each card.
 Pay particular attention to how we calculate the card's value in cardOrdinal() and then convert it back to a card in toCard().
 
+Finally, we sum all the ordinal values of all the cards in a deck (1326), and subtract the sum of all the cards with the missing card. The result is the ordinal value of the missing card - which we convert back to a card using toCard().
+
 ## Examples
 * gregArrayMath.js - shows how to do array math using a one-dimensional array to hold values for a two-dimensional array.
 
