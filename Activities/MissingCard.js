@@ -19,7 +19,7 @@ function cardOrdinal(card) {
 
 function toCard(ord) {
     var suit = Math.floor(ord / 13); 
-    var title = ord - suit * 13;
+    var title = ord % 13;
     return {title: titles[title], suit: suits[suit]}
 }
 

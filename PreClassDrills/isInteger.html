@@ -1,0 +1,54 @@
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var isInteger = function (x) {
+            var result = false;
+            console.log(x);
+            console.log(typeof x);
+            if (typeof x === "number") {
+                result = Math.floor(x) === x;
+            } else if (typeof x === "string") {
+                result = true;
+                for (c of x) {
+                    if ("0123456789".indexOf(c) === -1) {
+                        result = false;
+                    }
+                }
+            }
+            console.log("   " + result);
+            return result;
+        }
+        var isInt1 = function (input) { return parseInt(input) === input; }
+        var isInt2 = function (input) { return Math.floor(input) === input; }
+        
+        isInteger(1);
+        isInteger(3.1459);
+        isInteger("1");
+        isInteger("3.14159");
+        isInteger("Greg");
+        isInteger("867-5309");
+
+        console.log("-----------------");
+
+        console.log(isInt1(1));
+        console.log(isInt1(3.1459));
+        console.log(isInt1("1"));
+        console.log(isInt1("3.14159"));
+        console.log(isInt1("Greg"));
+        console.log(isInt1("867-5309"));
+
+        console.log("-----------------");
+
+        console.log(isInt2(1));
+        console.log(isInt2(3.1459));
+        console.log(isInt2("1"));
+        console.log(isInt2("3.14159"));
+        console.log(isInt2("Greg"));
+        console.log(isInt2("867-5309"));
+    </script>
+</head>
+
+<body>
+    <div </body> </html>

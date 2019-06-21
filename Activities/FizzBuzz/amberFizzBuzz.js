@@ -1,19 +1,3 @@
-2mlcmonkeys
-
-
-
-
-
-
-Message List
-
-Amber Charnley 
-2mlcmonkeys
-This is the very beginning of your direct message history with @Amber Charnley
-
-Amber Charnley [7:59 PM]
-FizzBuzz
-Untitled 
 <!DOCTYPE html>
 <html lang="en">
 <head>
