@@ -23,6 +23,11 @@
      * of the loop without returning false, the returns 'true' (because all the letters
      * were represented in the array).
      * 
+     * This method has the advantage of iterating only over the array of characters once,
+     * not calling str.includes() over and over again.
+     * 
+     * However, it has the disadvantage of not terminating early when it's clear that 
+     * a certain letter of the alphabet is not represented in the string.
      **/
 
     var isPangram = function (str) {
