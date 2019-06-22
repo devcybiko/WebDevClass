@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    <div id="results"></div>
+</body>
+
+<script>
+    /**
+     * This solution came from Deb
+     * 
+     * Here, she iterates across the input string converting the character from a text value
+     * to an integer. The 'math' here is left as an exercise for the student ;)
+     * 
+     * Then, she updates an array with 'true' for each of 0-25 (one slot in the array
+     * for each letter of the alphabet).
+     * 
+     * Finally, when every character has been examined, she loops across her 'alphabet'
+     * array and if any elements are not true, she returns 'false'. If she gets out
+     * of the loop without returning false, the returns 'true' (because all the letters
+     * were represented in the array).
+     * 
+     **/
+
+    var isPangram = function (str) {
+        str = str.toLowerCase();
+        const alphabet = new Array(26).fill(false);
+        const aAsInt = "a".charCodeAt(0);
+        str = str.toLowerCase();
+        for (var i = 0; i < str.length; i++) {
+            var c = str.charCodeAt(i);
+            var diff = c - aAsInt;
+            console.log(`${c} ${aAsInt} ${diff}`);
+
+            if (diff >= 0 && diff <= 25) {
+                alphabet[diff] = true;
+            }
+        }
+        for (var i=0; i<alphabet.length; i++) {
+            console.log(`${i}: ${alphabet[i]}`);
+            if (!alphabet[i]) {
+                return false
+            }
+        }
+        return true;
+    }
+
+    /**
+ * here are some test cases for isPangram()
+ **/
+    var testData = [
+        { input: "Watch Jeopardy, Alex Trebek’s fun TV quiz game", expected: true },
+        { input: "Five hexing wizard bots jump quickly", expected: true },
+        { input: "JavaScript is the best", expected: false }
+    ];
+
+    function updateDisplay(s) {
+        $("#results").append(`<p>${s}</p>`);
+    }
+
+    function testHarness() {
+        for (test of testData) {
+            var result = isPangram(test.input)
+            if (test.expected !== result) {
+                updateDisplay(`ERROR: isPangram("${test.input})" returned ${result} but I expected ${test.expected}`);
+            } else {
+                updateDisplay(`SUCCESS: isPangram("${test.input}") returned ${result}`);
+            }
+        }
+    }
+
+    /// call the test harness
+    testHarness();
+</script>
+
+</html>

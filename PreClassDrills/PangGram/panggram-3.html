@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+    <div id="results"></div>
+</body>
+
+<script>
+    /**
+     * This solution came from Will
+     * 
+     * Here, he iterates across the string, updating a string with
+     * unique characters until the string is 26 characters long.
+     * When that happens, he knows he can stop.
+     * 
+     * The downside here is that he must determine if a character is a letter or not.
+     * Which is pretty straightforward with the appropriate conditional.
+     **/
+
+    var isLetter = function (c) {
+        return c >= "a" && c <= "z";
+    }
+    var isPangram = function (str) {
+        str = str.toLowerCase();
+        var alphabet = "";
+        for (var i = 0; i < str.length; i++) {
+            var c = str[i];
+            if (isLetter(c)) {
+                if (!alphabet.includes(c)) {
+                    alphabet += c;
+                }
+                if (alphabet.length === 26) return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+ * here are some test cases for isPangram()
+ **/
+    var testData = [
+        { input: "Watch Jeopardy, Alex Trebek’s fun TV quiz game", expected: true },
+        { input: "Five hexing wizard bots jump quickly", expected: true },
+        { input: "JavaScript is the best", expected: false }
+    ];
+
+    function updateDisplay(s) {
+        $("#results").append(`<p>${s}</p>`);
+    }
+
+    function testHarness() {
+        for (test of testData) {
+            var result = isPangram(test.input)
+            if (test.expected !== result) {
+                updateDisplay(`ERROR: isPangram("${test.input})" returned ${result} but I expected ${test.expected}`);
+            } else {
+                updateDisplay(`SUCCESS: isPangram("${test.input}") returned ${result}`);
+            }
+        }
+    }
+
+    /// call the test harness
+    testHarness();
+</script>
+
+</html>

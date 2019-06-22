@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+
+<body>
+    <div id="results"></div>
+</body>
+<script>
+    /**
+     * The offered solution in the class slides
+     * 
+     * This is a pretty good solution as it terminates early
+     * if the string is not a PanGram. So you have to do the math
+     * or statistics to figure out how often the input is going
+     * to be a non-pangram. 
+     * 
+     * In the grand scheme of things, it is likely that any sentence
+     * is NOT going to be a PanGram - so iterating across the alphabet
+     * looking for missing letters is a 'pretty good' solution.
+     * 
+     * However, using the letters in alphabetical order is likely
+     * not the optimal way. You should consider the 'frequency of occurance'
+     * of letters in English. IE: Start with 'z' since that is less
+     * frequently used that 'a' or 'e'.
+     * 
+     * Also, most programmers consider 'str.includes()' to be "free"
+     * or "instantaenous" - but it IS NOT. It iterates over the
+     * string for you. So, if the str is VERY LONG and the letter that 
+     * you're searching for appears at the VERY END, then this is going
+     * to take longer than other solutions.
+     * Consider a string like "........(1,000,000 dots go here)...abcdefghijklmnopqrstuvwxyz".
+     * In this case, the performace of str.includes() is going to take
+     * 1,000,000 iterations to conclude that a letter is/isn't in the string.
+     **/
+
+    var isPangram = function (str) {
+        str = str.toLowerCase();
+        var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        for (var i = 0; i < alphabet.length; i++) {
+            if (!str.includes(alphabet[i])) {
+                return false;
+            }
+        } return true;
+    }
+
+    /**
+ * here are some test cases for isPangram()
+ **/
+    var testData = [
+        { input: "Watch Jeopardy, Alex Trebek’s fun TV quiz game", expected: true },
+        { input: "Five hexing wizard bots jump quickly", expected: true },
+        { input: "JavaScript is the best", expected: false }
+    ];
+
+    function updateDisplay(s) {
+        $("#results").append(`<p>${s}</p>`);
+    }
+
+    function testHarness() {
+        for (test of testData) {
+            var result = isPangram(test.input)
+            if (test.expected !== result) {
+                updateDisplay(`ERROR: isPangram("${test.input})" returned ${result} but I expected ${test.expected}`);
+            } else {
+                updateDisplay(`SUCCESS: isPangram("${test.input}") returned ${result}`);
+            }
+        }
+    }
+
+    /// call the test harness
+    testHarness();
+
+</script>
+
+</html>
