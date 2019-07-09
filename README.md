@@ -39,6 +39,7 @@ Finally, we sum all the ordinal values of all the cards in a deck (1326), and su
 * gregArrayMath.js - shows how to do array math using a one-dimensional array to hold values for a two-dimensional array.
 
 ## ToolKit
+(ToolKit)[./ToolKit]
 1. greg.js - a collection of JavaScript functions that you may find useful
 2. gregTest.js - a simple test framework to verify the functions work
 3. To run the tests run `runtests.sh`
