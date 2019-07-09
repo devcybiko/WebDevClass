@@ -1,0 +1,35 @@
+<h1 id="gregs-web-dev-support-files">GREG’S WEB DEV SUPPORT FILES</h1>
+<h2 id="activities">Activities</h2>
+<p>These are Greg’s answers to some of the Activities. Notice that there are some “test” functions in here. Later, we’ll learn about various Test Harnesses that will check our code to make sure it works.</p>
+<h3 id="gregcalc">gregcalc</h3>
+<p>Greg’s solutions to the Calculator activity There are three different methods of computing the calc result: 1. If-Hydra 2. Object dispatcher 3. eval()</p>
+<h3 id="fixbuzz">FixBuzz</h3>
+<p>Here are three student’s versions of FizzBuzz - a common interview challenge. Plus, a one-line FizzBuzz solution that will blow your mind!</p>
+<h3 id="rpslx---rock-paper-scissors-lizard-spock">RPSLX - Rock Paper Scissors Lizard Spock</h3>
+<ol type="1">
+<li>rps-solved.html - the if-hydra solution</li>
+<li>rps-greg.html - Greg’s five-line solution to the if-hydra</li>
+<li>rpslx-solved.html - an extension to the if-hydra to add ‘lizard’ and ‘spock’</li>
+<li>rpslx-greg.html - Greg’s one-line change that allows you to play RPSLX</li>
+</ol>
+<h3 id="missingcard">MissingCard</h3>
+<p>Greg’s solution to the missing card activity. The algorithm is to convert the card to an ‘ordinal’ value. * diamonds = ‘0-12’ * hearts = ‘13-25’ * clubs=‘26-38’ * spades=‘39-51’</p>
+<p>Then, for each suit, we add the card’s ordinal (A=0..King=12). This gives us a value from 0-51 which represents each card. Pay particular attention to how we calculate the card’s value in cardOrdinal() and then convert it back to a card in toCard().</p>
+<p>Finally, we sum all the ordinal values of all the cards in a deck (1326), and subtract the sum of all the cards with the missing card. The result is the ordinal value of the missing card - which we convert back to a card using toCard().</p>
+<h2 id="examples">Examples</h2>
+<ul>
+<li>gregArrayMath.js - shows how to do array math using a one-dimensional array to hold values for a two-dimensional array.</li>
+</ul>
+<h2 id="toolkit">ToolKit</h2>
+<ol type="1">
+<li>greg.js - a collection of JavaScript functions that you may find useful</li>
+<li>gregTest.js - a simple test framework to verify the functions work</li>
+<li>To run the tests run <code>runtests.sh</code></li>
+</ol>
+<h3 id="toolkit-notes">ToolKit Notes</h3>
+<ol type="1">
+<li>Needs node.js version 12+</li>
+<li>Warning message is normal: (node:14003) ExperimentalWarning: The ESM module loader is experimental.</li>
+<li>If all goes well a message will display: Ran without errors.</li>
+<li>If there are errors a message will display: Errors were found</li>
+</ol>
